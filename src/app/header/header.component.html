@@ -2,12 +2,7 @@
   <button mat-icon-button (click)="addDays(-1)">
     <mat-icon>chevron_left</mat-icon>
   </button>
-  <div
-    id="date-group"
-    [ngClass]="{
-      highlight: dateSelectionService.isTheSelectedDateTodaysDate
-    }"
-  >
+  <div>
     <span id="day-of-week">{{ selectedDate | date: 'EEEE' }}</span>
     <span>{{ selectedDate | date: 'MMMM d' }}</span>
   </div>
