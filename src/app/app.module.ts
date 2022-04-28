@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -82,6 +82,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HammerModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
