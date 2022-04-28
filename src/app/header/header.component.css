@@ -1,7 +1,9 @@
 :host {
   display: grid;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  background: rgba(255, 255, 255, 0.87);
+  background: #fcfdfd;
+  box-shadow: 0.3px 0.5px 0.7px rgba(0, 0, 0, 0.04),
+    0.9px 1.6px 2.2px rgba(0, 0, 0, 0.024), 4px 7px 10px rgba(0, 0, 0, 0.016);
 }
 
 .container {
@@ -11,6 +13,7 @@
   align-items: center;
   justify-content: space-between;
   width: 320px;
+  height: 100%;
   color: rgba(0, 0, 0, 0.6);
 }
 
@@ -20,9 +23,13 @@
 }
 
 #date-group {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  height: calc(100% - 12px);
+  border-radius: 18px;
 }
 
 .highlight {
   color: white;
-  background-color: rgb(123, 150, 151);
 }
