@@ -23,11 +23,15 @@ export class NoteComponent implements OnInit {
 
   @HostListener('panstart', ['$event']) panStart(event) {
     this.panPos = this.note.position;
+    this.panMove(event);
   }
 
-  // @HostListener('panmove', ['$event']) panStart(event) {
-  //   this.panPos = this.note.position
-  // }
+  @HostListener('panmove', ['$event']) panMove(event) {
+    this.note.position = {
+      x: this.panPos.x + event.deltaX / this.boardNavigation.zoom.amount,
+      y: this.panPos.y + event.deltaY / this.boardNavigation.zoom.amount,
+    };
+  }
 
   @HostBinding('style.left') get left() {
     return this.note.position.x + 'px';
