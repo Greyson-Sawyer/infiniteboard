@@ -26,7 +26,7 @@
   background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url(assets/resize.svg);
+  background-image: url(https://raw.githubusercontent.com/Greyson-Sawyer/infiniteboard/7d4e9fd5ca4cb1f4ce381c3fe58fa3eccd03d368/src/assets/resize.svg);
   cursor: nw-resize;
   opacity: 0;
   transition: 200ms cubic-bezier(0.34, 1.23, 0.86, 1.06);
@@ -55,7 +55,7 @@ header {
   border: none;
   padding: 0;
   background: none;
-  
+
   overflow-x: hidden;
 }
 
@@ -120,7 +120,7 @@ header {
   display: grid;
   gap: 0px;
   padding: 0px;
-  grid-template-columns: repeat( auto-fit, minmax(20px, 1fr) );
+  grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
   justify-content: center;
   background: rgba(0, 0, 0, 0.16);
   bottom: calc(100% + 2px);
@@ -145,7 +145,6 @@ header {
   height: 20px;
   font-size: 1.25rem;
   color: rgba(0, 0, 0, 0.6);
-
 }
 
 /* SCROLLBAR */
@@ -161,4 +160,3 @@ header {
   background-color: #dfdfdf;
   border-radius: 10px;
 }
-  
