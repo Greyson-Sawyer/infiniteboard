@@ -5,8 +5,10 @@
 
   display: flex;
   align-items: center;
-  background: white;
+  background: #fcfdfd;
   padding: 0 4px;
   border-radius: 24px;
   border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0.3px 0.5px 0.7px rgba(0, 0, 0, 0.04),
+    0.9px 1.6px 2.2px rgba(0, 0, 0, 0.024), 4px 7px 10px rgba(0, 0, 0, 0.016);
 }

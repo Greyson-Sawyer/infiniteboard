@@ -1,10 +1,10 @@
 #layout {
   display: grid;
   grid-template-rows: 48px auto;
-  grid-template-columns: 64px auto;
+  grid-template-columns: auto;
   grid-template-areas:
-    'header header'
-    'sidebar board';
+    'header'
+    'board';
   height: 100%;
 }
 
@@ -13,7 +13,7 @@ app-header {
 }
 
 sidebar {
-  grid-area: sidebar;
+  /* grid-area: sidebar; */
 }
 
 board {
