@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-
 import { AppRoutingModule } from './app-routing.module';
+import { environment } from '../environments/environment';
 
+// USER
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -13,6 +14,7 @@ import { BoardComponent } from './board/board.component';
 import { ZoomControlsComponent } from './zoom-controls/zoom-controls.component';
 import { NoteComponent } from './note/note.component';
 
+// MATERIAL
 // import { PortalModule } from '@angular/cdk/portal';
 // import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -51,7 +53,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
