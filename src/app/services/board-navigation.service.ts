@@ -10,10 +10,10 @@ export class BoardNavigationService {
     min: 0.2,
     step: 0.1,
     scrollStep: 0.1,
-    origin : {
+    origin: {
       x: '50%',
-      y: '50%'
-    }
+      y: '50%',
+    },
   };
   position = {
     x: 0,
@@ -25,25 +25,30 @@ export class BoardNavigationService {
     x: 0,
     y: 0,
   };
+
+  panPos = {
+    x: 0,
+    y: 0,
+  };
   renderer: Renderer2;
   constructor(rendererFactory: RendererFactory2) {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
 
-  changeZoom(amount: number, origin: {x: string, y: string}) {
+  changeZoom(amount: number, origin: { x: string; y: string }) {
     if (amount <= this.zoom.max && amount >= this.zoom.min) {
       this.zoom.amount = amount;
-      this.zoom.origin = origin
+      this.zoom.origin = origin;
     }
   }
 
-  scrollZoom(delta: number, origin: {x: string, y:string}) {
+  scrollZoom(delta: number, origin: { x: string; y: string }) {
     if (delta > 0 && this.zoom.amount < this.zoom.max) {
       this.zoom.amount += this.zoom.scrollStep;
     } else if (delta < 0 && this.zoom.amount > this.zoom.min) {
       this.zoom.amount -= this.zoom.scrollStep;
     }
-    this.zoom.origin = origin
+    this.zoom.origin = origin;
     this.zoom.amount = this.zoom.amount;
   }
 
@@ -72,5 +77,15 @@ export class BoardNavigationService {
     });
   }
 
-  
+  startPan(deltaX: number, deltaY: number) {
+    this.panPos = this.position;
+    this.panMove(deltaX, deltaY);
+  }
+
+  panMove(deltaX: number, deltaY: number) {
+    this.position = {
+      x: this.panPos.x + deltaX / this.zoom.amount,
+      y: this.panPos.y + deltaY / this.zoom.amount,
+    };
+  }
 }

@@ -23,11 +23,21 @@ export class BoardComponent implements OnInit {
     return this.boardNavigation.zoom.amount;
   }
 
-  mousedown(e: MouseEvent) {
+  startDrag(e: MouseEvent) {
     this.boardNavigation.startDrag(e.clientX, e.clientY);
   }
 
-  get dotMatrixPosition(){
-    return  `calc(50% + ${this.boardNavigation.position.x * this.zoomAmount}px), calc(50% + ${this.boardNavigation.position.y * this.zoomAmount}px)`
+  panStart(event) {
+    this.boardNavigation.startPan(event.deltaX, event.deltaY);
+  }
+
+  panMove(event) {
+    this.boardNavigation.panMove(event.deltaX, event.deltaY);
+  }
+
+  get dotMatrixPosition() {
+    return `calc(50% + ${
+      this.boardNavigation.position.x * this.zoomAmount
+    }px), calc(50% + ${this.boardNavigation.position.y * this.zoomAmount}px)`;
   }
 }

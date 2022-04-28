@@ -21,6 +21,14 @@ export class NoteComponent implements OnInit {
     this.startDrag(e.clientX, e.clientY);
   }
 
+  @HostListener('panstart', ['$event']) panStart(event) {
+    this.panPos = this.note.position;
+  }
+
+  // @HostListener('panmove', ['$event']) panStart(event) {
+  //   this.panPos = this.note.position
+  // }
+
   @HostBinding('style.left') get left() {
     return this.note.position.x + 'px';
   }
@@ -45,6 +53,11 @@ export class NoteComponent implements OnInit {
   dragListenerFn: any;
   stopDragListenerFn: any;
   dragPos = {
+    x: 0,
+    y: 0,
+  };
+
+  panPos = {
     x: 0,
     y: 0,
   };

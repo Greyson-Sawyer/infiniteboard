@@ -9,7 +9,9 @@
       boardNavigation.position.y * zoomAmount +
       'px)'
   }"
-  (mousedown)="mousedown($event)"
+  (mousedown)="startDrag($event)"
+  (panstart)="panStart($event)"
+  (pan)="panMove($event)"
 ></div>
 
 <div
