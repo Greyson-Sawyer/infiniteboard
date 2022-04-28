@@ -1,0 +1,44 @@
+:host {
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* color: hsl(180, 80%, 22%); */
+  padding: 10px 0;
+  /* border: 1px solid black; */
+  cursor: pointer;
+}
+
+.tool:hover .tool-icon {
+  background: rgba(255, 215, 64, 0.4);
+  /* color: hsl(180, 80%, 22%); */
+}
+
+.tool:active .tool-icon {
+  background: rgba(255, 215, 64, 0.9);
+}
+
+.tool-icon {
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.87);
+  width: 2rem;
+  height: 1.67rem;
+  font-size: 1.25rem;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transition: 150ms;
+}
+
+.tool-name {
+  margin-top: 6px;
+  font-size: 0.625rem;
+  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.04rem;
+}

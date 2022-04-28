@@ -1,0 +1,26 @@
+:host {
+  display: grid;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.87)
+}
+
+#selected-date {
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 320px;
+  color:rgba(0, 0, 0, 0.6);
+  
+}
+
+#day-of-week {
+  font-weight: 700;
+  margin-right: 5px;
+}
+
+.highlight {
+  color: white;
+  background-color: rgb(123, 150, 151);
+}

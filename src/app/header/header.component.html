@@ -1,0 +1,29 @@
+<div
+  id="selected-date"
+  [ngClass]="{
+    highlight: dateSelectionService.isTheSelectedDateTodaysDate
+  }"
+>
+  <button mat-icon-button (click)="addDays(-1)">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <div>
+    <span
+      id="day-of-week"
+      [ngClass]="{
+        highlight: dateSelectionService.isTheSelectedDateTodaysDate
+      }"
+      >{{ selectedDate | date: 'EEEE' }}</span
+    >
+    <span
+      [ngClass]="{
+        highlight: dateSelectionService.isTheSelectedDateTodaysDate
+      }"
+      >{{ selectedDate | date: 'MMMM d' }}</span
+    >
+  </div>
+
+  <button mat-icon-button (click)="addDays(1)">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>

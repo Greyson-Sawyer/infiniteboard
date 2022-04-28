@@ -1,0 +1,164 @@
+:host {
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  background-color: palegoldenrod;
+  /* box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.16); */
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+}
+
+:host:active,
+:host:focus-within {
+  /* background-color: orange; */
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+/* RESIZE ICON */
+
+.resize-icon {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 20px;
+  height: 20px;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(assets/resize.svg);
+  cursor: nw-resize;
+  opacity: 0;
+  transition: 200ms cubic-bezier(0.34, 1.23, 0.86, 1.06);
+}
+
+:host:hover .resize-icon {
+  opacity: 0.28;
+}
+
+:host:active .resize-icon,
+:host:focus-within .resize-icon {
+  opacity: 0.48;
+}
+
+/* HEADER */
+
+header {
+  display: flex;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.input-header {
+  flex-grow: 1;
+  outline: none;
+  border: none;
+  padding: 0;
+  background: none;
+  
+  overflow-x: hidden;
+}
+
+.input-header::placeholder {
+  color: rgba(0, 0, 0, 0.24);
+  transition: 200ms cubic-bezier(0.34, 1.23, 0.86, 1.06);
+}
+
+:host:hover .input-header::placeholder,
+:host:focus-within .input-header::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.more-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0);
+  transition: 200ms cubic-bezier(0.34, 1.23, 0.86, 1.06);
+}
+
+:host:hover .more-icon,
+:host:focus-within .more-icon {
+  color: rgba(0, 0, 0, 0.56);
+}
+
+/* BODY */
+
+.note-body {
+  border: none;
+  resize: none;
+  outline: none;
+  overflow-y: auto;
+  flex-grow: 1;
+  margin: 0;
+  border-radius: 0px 0px 2px 2px;
+  background-color: hsla(180, 0%, 0%, 0);
+  padding: 0.1rem 0.3rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 0.8125rem;
+}
+
+.note-body::placeholder {
+  color: rgba(0, 0, 0, 0.2);
+  transition: 200ms cubic-bezier(0.34, 1.23, 0.86, 1.06);
+}
+
+:host:hover .note-body::placeholder,
+:host:focus-within .note-body::placeholder {
+  color: rgba(0, 0, 0, 0.56);
+}
+
+/* NOTE SETTINGS */
+
+.note-settings {
+  position: absolute;
+  display: grid;
+  gap: 0px;
+  padding: 0px;
+  grid-template-columns: repeat( auto-fit, minmax(20px, 1fr) );
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.16);
+  bottom: calc(100% + 2px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.color {
+  display: flex;
+  justify-content: center;
+  height: 20px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.color-checkmark {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  font-size: 1.25rem;
+  color: rgba(0, 0, 0, 0.6);
+
+}
+
+/* SCROLLBAR */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #dfdfdf;
+  border-radius: 10px;
+}
+  

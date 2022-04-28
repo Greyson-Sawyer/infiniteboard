@@ -1,0 +1,28 @@
+#layout {
+  display: grid;
+  grid-template-rows: 48px auto;
+  grid-template-columns: 64px auto;
+  grid-template-areas:
+    'header header'
+    'sidebar board';
+  height: 100%;
+}
+
+app-header {
+  grid-area: header;
+}
+
+sidebar {
+  grid-area: sidebar;
+}
+
+board {
+  grid-area: board;
+}
+#container {
+  display: grid;
+  place-items: center;
+}
+
+/* color-picker {
+} */

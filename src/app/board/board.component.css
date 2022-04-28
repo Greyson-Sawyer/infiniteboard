@@ -1,0 +1,39 @@
+:host {
+  display: grid;
+  overflow: hidden;
+  position: relative;
+}
+
+#dot-matrix {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+
+  background-image: url(/assets/circle.svg);
+  background-size: 16px;
+}
+
+#dot-matrix:active {
+  cursor: grabbing;
+}
+
+#container {
+  position: relative;
+  pointer-events: none;
+}
+
+#container > * {
+  pointer-events: auto;
+}
+
+#test {
+  position: absolute;
+  top: 80px;
+  left: 40px;
+  width: 200px;
+  height: 200px;
+  background: palegoldenrod;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}

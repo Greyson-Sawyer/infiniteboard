@@ -1,0 +1,20 @@
+/* Add application styles & imports to this file! */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('//fonts.googleapis.com/earlyaccess/notosanstc.css');
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+  background: #ebedee;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}

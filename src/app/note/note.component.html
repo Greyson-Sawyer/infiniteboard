@@ -1,0 +1,44 @@
+<header>
+  <input
+    type="text"
+    [placeholder]="headerText"
+    class="input-header"
+    [(ngModel)]="note.header"
+    (change)="saveNote()"
+  />
+  <mat-icon
+    matRipple
+    [matRippleCentered]="true"
+    [matRippleRadius]="12"
+    class="more-icon"
+    (click)="toggleSettings()"
+    >more_horiz</mat-icon
+  >
+</header>
+
+<textarea
+  class="note-body custom-scrollbar"
+  [placeholder]="note.sentiment"
+  [(ngModel)]="note.body"
+  (change)="saveNote()"
+></textarea>
+
+<div
+  class="resize-icon"
+  (mousedown)="
+    startResize($event.clientX, $event.clientY); $event.stopPropagation()
+  "
+></div>
+
+<div class="note-settings" *ngIf="isSettingsOpen">
+  <div
+    class="color"
+    *ngFor="let color of data.colors"
+    [ngStyle]="{ backgroundColor: color }"
+    (click)="selectColor(color)"
+  >
+    <mat-icon *ngIf="note.backgroundColor === color" class="color-checkmark"
+      >check_circle</mat-icon
+    >
+  </div>
+</div>

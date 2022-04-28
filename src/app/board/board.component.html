@@ -1,0 +1,32 @@
+<div
+  id="dot-matrix"
+  [ngStyle]="{
+    backgroundSize: zoomAmount + 'rem',
+    backgroundPosition:
+      'calc(50% + ' +
+      boardNavigation.position.x * zoomAmount +
+      'px) calc(50% + ' +
+      boardNavigation.position.y * zoomAmount +
+      'px)'
+  }"
+  (mousedown)="mousedown($event)"
+></div>
+
+<div
+  id="container"
+  [ngStyle]="{
+    transform:
+      'scale(' +
+      zoomAmount +
+      ') ' +
+      'translate(' +
+      boardNavigation.position.x +
+      'px,' +
+      boardNavigation.position.y +
+      'px)'
+  }"
+>
+  <note *ngFor="let note of notes" [note]="note"></note>
+</div>
+
+<zoom-controls></zoom-controls>

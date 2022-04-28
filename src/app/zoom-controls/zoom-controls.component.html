@@ -1,0 +1,15 @@
+<button mat-icon-button (click)="scrollZoom(-1)">
+  <mat-icon>zoom_out</mat-icon>
+</button>
+<mat-slider
+  aria-label="unit(s)"
+  [ngModel]="boardNavigation.zoom.amount"
+  [max]="boardNavigation.zoom.max"
+  [min]="boardNavigation.zoom.min"
+  [step]="boardNavigation.zoom.step"
+  (input)="changeZoom($event)"
+></mat-slider>
+<button mat-icon-button (click)="scrollZoom(1)">
+  <mat-icon>zoom_in</mat-icon>
+</button>
+<!-- <p>{{ boardNavigation.zoom.amount }}</p> -->
