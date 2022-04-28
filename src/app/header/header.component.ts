@@ -9,19 +9,21 @@ import { DateSelectionService } from '../services/date-selection.service';
 export class HeaderComponent implements OnInit {
   @HostBinding('style.backgroundColor') get backgroundColor() {
     return this.dateSelectionService.isTheSelectedDateTodaysDate
-      ? this.highlightColor
-      : this.offWhite;
+      ? this.offWhite
+      : this.gray;
   }
 
   @HostBinding('style.color') get foregroundColor() {
     return this.dateSelectionService.isTheSelectedDateTodaysDate
-      ? this.offWhite
+      ? this.black
       : this.offBlack;
   }
 
   highlightColor = 'rgb(56, 127, 129)';
   offWhite = 'rgba(255, 255, 255, 0.87)';
+  black = 'rgba(0, 0, 0, 0.87)';
   offBlack = 'rgba(0, 0, 0, 0.6)';
+  gray = 'rgba(255,255,255,0.2)';
   constructor(public dateSelectionService: DateSelectionService) {}
 
   ngOnInit() {}
