@@ -1,6 +1,9 @@
 {
   "name": "angular",
   "version": "0.0.0",
+  "description": "Application built with Angular and Stackblitz.",
+  "author": "Greyson Sawyer (https:greysonsawyer.com)",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@angular/animations": "^13.3.5",
@@ -14,6 +17,7 @@
     "@angular/platform-browser": "^13.3.5",
     "@angular/platform-browser-dynamic": "^13.3.5",
     "@angular/router": "^13.3.5",
+    "@angular/service-worker": "^13.3.5",
     "core-js": "^3.22.3",
     "moment": "^2.29.3",
     "rxjs": "^7.5.5",
