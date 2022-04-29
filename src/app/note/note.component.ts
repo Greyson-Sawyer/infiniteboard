@@ -21,14 +21,15 @@ export class NoteComponent implements OnInit {
     this.startDrag(e.clientX, e.clientY);
   }
 
-  @HostListener('panstart', ['$event']) onPanStart(event) {
-    this.panPos = this.note.position
-    this.panMove(event.deltaX, event.deltaY)
-  }
+  // @HostListener('panstart', ['$event']) onPanStart(event) {
 
-  @HostListener('panmove', ['$event']) onPanMove(event) {
-    this.panMove(event.deltaX, event.deltaY)
-  }
+  //   this.panPos = this.note.position;
+  //   this.panMove(event.deltaX, event.deltaY);
+  // }
+
+  // @HostListener('panmove', ['$event']) onPanMove(event) {
+  //   this.panMove(event.deltaX, event.deltaY);
+  // }
 
   @HostBinding('style.left') get left() {
     return this.note.position.x + 'px';
