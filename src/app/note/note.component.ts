@@ -21,8 +21,8 @@ export class NoteComponent implements OnInit {
     this.startDrag(e.clientX, e.clientY);
   }
 
-  @HostListener('panmove', ['$event']) onPanStart(event) {
-    console.log(event);
+  @HostListener('pancancel', ['$event']) onPanStart(event) {
+    console.log('bad');
   }
 
   @HostBinding('style.left') get left() {
@@ -110,6 +110,7 @@ export class NoteComponent implements OnInit {
       this.dragListenerFn();
       this.stopDragListenerFn();
       this.data.activateNote(this.note);
+      this.saveNote();
     });
   }
 
