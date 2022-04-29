@@ -23,6 +23,10 @@ export class BoardComponent implements OnInit {
     return this.boardNavigation.zoom.amount;
   }
 
+  onPan(event){
+    console.log(event)
+  }
+
   startDrag(e: MouseEvent) {
     this.boardNavigation.startDrag(e.clientX, e.clientY);
   }

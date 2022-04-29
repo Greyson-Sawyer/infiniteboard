@@ -21,16 +21,8 @@ export class NoteComponent implements OnInit {
     this.startDrag(e.clientX, e.clientY);
   }
 
-  @HostListener('panstart', ['$event']) panStart(event) {
-    this.panPos = this.note.position;
-    this.panMove(event);
-  }
-
-  @HostListener('panmove', ['$event']) panMove(event) {
-    this.note.position = {
-      x: this.panPos.x + event.deltaX / this.boardNavigation.zoom.amount,
-      y: this.panPos.y + event.deltaY / this.boardNavigation.zoom.amount,
-    };
+  @HostListener('panmove', ['$event']) onPanStart(event) {
+    console.log(event);
   }
 
   @HostBinding('style.left') get left() {
@@ -120,6 +112,17 @@ export class NoteComponent implements OnInit {
       this.data.activateNote(this.note);
     });
   }
+
+  // PAN
+
+  panMove(deltaX: number, deltaY: number) {
+    this.note.position = {
+      x: this.panPos.x + deltaX / this.boardNavigation.zoom.amount,
+      y: this.panPos.y + deltaY / this.boardNavigation.zoom.amount,
+    };
+  }
+
+  // RESIZE
 
   startResize(resizeStartX: number, resizeStartY: number) {
     if (this.resizeListenerFn) {
