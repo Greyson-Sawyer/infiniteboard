@@ -1,10 +1,12 @@
 import {
   Component,
+  ElementRef,
   HostBinding,
   HostListener,
   Input,
   OnInit,
   Renderer2,
+  ViewChild,
 } from '@angular/core';
 import { Note } from '../models/note.model';
 import { BoardNavigationService } from '../services/board-navigation.service';
@@ -18,7 +20,14 @@ import { FakeDataService } from '../services/fake-data.service';
 export class NoteComponent implements OnInit {
   @Input() note: Note;
   @HostListener('mousedown', ['$event']) onMouseDown(e: MouseEvent) {
-    this.startDrag(e.clientX, e.clientY);
+    if (!this.isActive) {
+      this.startDrag(e.clientX, e.clientY);
+    }
+  }
+
+  @HostListener('click', ['$event']) onClick(e: MouseEvent) {
+    console.log('fired');
+    this.data.activateNote(this.note);
   }
 
   // @HostListener('panstart', ['$event']) onPanStart(event) {
@@ -50,6 +59,10 @@ export class NoteComponent implements OnInit {
     return this.note.backgroundColor;
   }
 
+  @HostBinding('class.active') get isActive() {
+    return this.note.isActive;
+  }
+
   isSettingsOpen = false;
 
   dragListenerFn: any;
@@ -78,10 +91,6 @@ export class NoteComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
-
-  get isActive() {
-    return this.data.activeNote === this.note;
-  }
 
   get headerText() {
     return `Note #${this.note.id}`;
@@ -115,7 +124,6 @@ export class NoteComponent implements OnInit {
       // Kills both of these listeners
       this.dragListenerFn();
       this.stopDragListenerFn();
-      this.data.activateNote(this.note);
       this.saveNote();
     });
   }

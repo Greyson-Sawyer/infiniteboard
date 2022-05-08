@@ -56,7 +56,7 @@ export class FakeDataService {
       note.isActive = false;
     });
     note.isActive = true;
-    console.log(this.__notes.map((note) => note.isActive));
+    // console.log(this.__notes.map((note) => note.isActive));
   }
 
   createNote() {

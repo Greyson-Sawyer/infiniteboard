@@ -5,6 +5,7 @@
     class="input-header"
     [(ngModel)]="note.header"
     (change)="saveNote()"
+    [disabled]="!isActive"
   />
   <mat-icon
     matRipple
@@ -21,6 +22,7 @@
   [placeholder]="note.sentiment"
   [(ngModel)]="note.body"
   (change)="saveNote()"
+  [disabled]="!isActive"
 ></textarea>
 
 <div

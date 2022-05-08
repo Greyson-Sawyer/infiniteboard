@@ -9,9 +9,7 @@
   border-radius: 2px;
 }
 
-:host:active,
-:host:focus-within {
-  /* background-color: orange; */
+:host.active {
   border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
@@ -36,8 +34,7 @@
   opacity: 0.28;
 }
 
-:host:active .resize-icon,
-:host:focus-within .resize-icon {
+:host.active .resize-icon {
   opacity: 0.48;
 }
 
@@ -66,7 +63,7 @@ header {
 }
 
 :host:hover .input-header::placeholder,
-:host:focus-within .input-header::placeholder {
+:host.active .input-header::placeholder {
   color: rgba(0, 0, 0, 0.6);
 }
 
@@ -83,7 +80,7 @@ header {
 }
 
 :host:hover .more-icon,
-:host:focus-within .more-icon {
+:host.active .more-icon {
   color: rgba(0, 0, 0, 0.56);
 }
 
@@ -111,7 +108,7 @@ header {
 }
 
 :host:hover .note-body::placeholder,
-:host:focus-within .note-body::placeholder {
+:host.active .note-body::placeholder {
   color: rgba(0, 0, 0, 0.56);
 }
 
