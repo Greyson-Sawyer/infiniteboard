@@ -6,6 +6,7 @@
     [(ngModel)]="note.header"
     (change)="saveNote()"
     [disabled]="!isActive"
+    #noteheader
   />
   <mat-icon
     matRipple
@@ -23,6 +24,7 @@
   [(ngModel)]="note.body"
   (change)="saveNote()"
   [disabled]="!isActive"
+  #notebody
 ></textarea>
 
 <div

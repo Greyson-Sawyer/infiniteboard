@@ -22,9 +22,9 @@ export class NoteComponent implements OnInit {
   @HostListener('mousedown', ['$event']) onMouseDown(e: any) {
     const isTargetHeader = e.target.classList.contains('input-header');
     if (isTargetHeader) {
-      this.startDrag(e.clientX, e.clientY);
+      this.startDrag(e.clientX, e.clientY, 'header');
     } else if (!this.isActive) {
-      this.startDrag(e.clientX, e.clientY);
+      this.startDrag(e.clientX, e.clientY, 'body');
     }
   }
 
@@ -51,7 +51,8 @@ export class NoteComponent implements OnInit {
     return this.note.isActive;
   }
 
-  @ViewChild('notebody')
+  @ViewChild('noteheader') noteHeaderInput: ElementRef;
+  @ViewChild('notebody') noteBodyInput: ElementRef;
 
   isSettingsOpen = false;
 
@@ -85,7 +86,7 @@ export class NoteComponent implements OnInit {
 
   ngOnInit() {
     if (this.note.isActive) {
-      this.activateNote();
+      this.activateNote('body');
     }
   }
 
@@ -106,7 +107,7 @@ export class NoteComponent implements OnInit {
   // DRAG
   //
 
-  startDrag(dragStartX: number, dragStartY: number) {
+  startDrag(dragStartX: number, dragStartY: number, clickedElement: string) {
     if (this.dragListenerFn) {
       this.dragListenerFn();
       this.stopDragListenerFn();
@@ -129,7 +130,7 @@ export class NoteComponent implements OnInit {
       // If the note hasn't moved, this will activate the note.
       if (dragStartX === this.dragPos.x && dragStartY === this.dragPos.y) {
         if (!this.note.isActive) {
-          this.activateNote();
+          this.activateNote(clickedElement);
         }
       }
       // No matter what, kills both of these listeners
@@ -195,8 +196,19 @@ export class NoteComponent implements OnInit {
     this.saveNote();
   }
 
-  activateNote() {
+  //
+  //
+  // UTILITY
+  //
+
+  saveNote() {
+    this.data.saveNotesToLocalStorage();
+  }
+
+  activateNote(clickedElement: string) {
     this.data.activateNote(this.note);
+    if (clickedElement === 'header') this.focusHeader();
+    if (clickedElement === 'body') this.focusBody();
     // Now that the note is activated, listen for the next mousedown
     // And possibly deactive the note if clicked elsewhere
     this.deactivateNoteListenerFn = this.renderer.listen(
@@ -212,12 +224,13 @@ export class NoteComponent implements OnInit {
     );
   }
 
-  //
-  //
-  // UTILITY
-  //
+  focusHeader() {
+    // Has to have a slight delay to avoid focusing a disabled input
+    // which is not allowed
+    setTimeout(() => this.noteHeaderInput.nativeElement.focus(), 0);
+  }
 
-  saveNote() {
-    this.data.saveNotesToLocalStorage();
+  focusBody() {
+    setTimeout(() => this.noteBodyInput.nativeElement.focus(), 0);
   }
 }
