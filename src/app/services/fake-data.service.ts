@@ -52,11 +52,15 @@ export class FakeDataService {
   }
 
   activateNote(note: Note) {
+    this.deactiveAllNotes();
+    note.isActive = true;
+    // console.log(this.__notes.map((note) => note.isActive));
+  }
+
+  deactiveAllNotes() {
     this.__notes.forEach((note) => {
       note.isActive = false;
     });
-    note.isActive = true;
-    // console.log(this.__notes.map((note) => note.isActive));
   }
 
   createNote() {

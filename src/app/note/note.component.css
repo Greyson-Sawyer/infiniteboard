@@ -55,6 +55,15 @@ header {
 
   overflow-x: hidden;
   touch-action: none;
+  cursor: default;
+}
+
+.input-header:focus {
+  cursor: text;
+}
+
+.input-header:active {
+  cursor: grabbing;
 }
 
 .input-header::placeholder {
@@ -100,6 +109,15 @@ header {
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 0.8125rem;
   touch-action: none;
+  cursor: default;
+}
+
+:host:active .note-body {
+  cursor: grabbing;
+}
+
+:host.active .note-body {
+  cursor: text;
 }
 
 .note-body::placeholder {

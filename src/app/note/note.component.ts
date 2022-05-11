@@ -19,31 +19,14 @@ import { FakeDataService } from '../services/fake-data.service';
 })
 export class NoteComponent implements OnInit {
   @Input() note: Note;
-  @HostListener('mousedown', ['$event']) onMouseDown(e: MouseEvent) {
-    if (!this.isActive && !this.wasDragged) {
+  @HostListener('mousedown', ['$event']) onMouseDown(e: any) {
+    const isTargetHeader = e.target.classList.contains('input-header');
+    if (isTargetHeader) {
       this.startDrag(e.clientX, e.clientY);
-      this.wasDragged = true;
-    } else if (!this.isActive && this.wasDragged) {
-
-    }
-    this.wasDragged = true;
-  }
-
-  @HostListener('mouseup', ['$event']) onClick(e: MouseEvent) {
-    if (!this.wasDragged) {
-      this.data.activateNote(this.note);
+    } else if (!this.isActive) {
+      this.startDrag(e.clientX, e.clientY);
     }
   }
-
-  // @HostListener('panstart', ['$event']) onPanStart(event) {
-
-  //   this.panPos = this.note.position;
-  //   this.panMove(event.deltaX, event.deltaY);
-  // }
-
-  // @HostListener('panmove', ['$event']) onPanMove(event) {
-  //   this.panMove(event.deltaX, event.deltaY);
-  // }
 
   @HostBinding('style.left') get left() {
     return this.note.position.x + 'px';
@@ -68,8 +51,9 @@ export class NoteComponent implements OnInit {
     return this.note.isActive;
   }
 
+  @ViewChild('notebody')
+
   isSettingsOpen = false;
-  wasDragged = false;
 
   dragListenerFn: any;
   stopDragListenerFn: any;
@@ -90,13 +74,20 @@ export class NoteComponent implements OnInit {
     y: 0,
   };
 
+  deactivateNoteListenerFn: any;
+
   constructor(
     private renderer: Renderer2,
     private boardNavigation: BoardNavigationService,
-    public data: FakeDataService
+    public data: FakeDataService,
+    private noteElement: ElementRef
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.note.isActive) {
+      this.activateNote();
+    }
+  }
 
   get headerText() {
     return `Note #${this.note.id}`;
@@ -108,11 +99,6 @@ export class NoteComponent implements OnInit {
 
   set dragPos(pos: { x: number; y: number }) {
     this.__dragPos = pos;
-  }
-
-  onHeaderMousedown(e: MouseEvent) {
-    console.log('band');
-    this.startDrag(e.clientX, e.clientY);
   }
 
   //
@@ -140,7 +126,13 @@ export class NoteComponent implements OnInit {
       }
     );
     this.stopDragListenerFn = this.renderer.listen('window', 'mouseup', () => {
-      // Kills both of these listeners
+      // If the note hasn't moved, this will activate the note.
+      if (dragStartX === this.dragPos.x && dragStartY === this.dragPos.y) {
+        if (!this.note.isActive) {
+          this.activateNote();
+        }
+      }
+      // No matter what, kills both of these listeners
       this.dragListenerFn();
       this.stopDragListenerFn();
       this.saveNote();
@@ -183,6 +175,7 @@ export class NoteComponent implements OnInit {
       () => {
         this.resizeListenerFn();
         this.stopResizeListenerFn();
+        this.saveNote();
       }
     );
   }
@@ -201,6 +194,28 @@ export class NoteComponent implements OnInit {
     this.isSettingsOpen = false;
     this.saveNote();
   }
+
+  activateNote() {
+    this.data.activateNote(this.note);
+    // Now that the note is activated, listen for the next mousedown
+    // And possibly deactive the note if clicked elsewhere
+    this.deactivateNoteListenerFn = this.renderer.listen(
+      'window',
+      'mousedown',
+      (m: MouseEvent) => {
+        // If the mousedown event is not on the note, it will deactive the note
+        if (!this.noteElement.nativeElement.contains(m.target)) {
+          this.data.deactiveAllNotes();
+          this.deactivateNoteListenerFn();
+        }
+      }
+    );
+  }
+
+  //
+  //
+  // UTILITY
+  //
 
   saveNote() {
     this.data.saveNotesToLocalStorage();
