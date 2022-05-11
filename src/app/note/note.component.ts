@@ -20,14 +20,19 @@ import { FakeDataService } from '../services/fake-data.service';
 export class NoteComponent implements OnInit {
   @Input() note: Note;
   @HostListener('mousedown', ['$event']) onMouseDown(e: MouseEvent) {
-    if (!this.isActive) {
+    if (!this.isActive && !this.wasDragged) {
       this.startDrag(e.clientX, e.clientY);
+      this.wasDragged = true;
+    } else if (!this.isActive && this.wasDragged) {
+
     }
+    this.wasDragged = true;
   }
 
-  @HostListener('click', ['$event']) onClick(e: MouseEvent) {
-    console.log('fired');
-    this.data.activateNote(this.note);
+  @HostListener('mouseup', ['$event']) onClick(e: MouseEvent) {
+    if (!this.wasDragged) {
+      this.data.activateNote(this.note);
+    }
   }
 
   // @HostListener('panstart', ['$event']) onPanStart(event) {
@@ -64,10 +69,11 @@ export class NoteComponent implements OnInit {
   }
 
   isSettingsOpen = false;
+  wasDragged = false;
 
   dragListenerFn: any;
   stopDragListenerFn: any;
-  dragPos = {
+  __dragPos = {
     x: 0,
     y: 0,
   };
@@ -94,6 +100,19 @@ export class NoteComponent implements OnInit {
 
   get headerText() {
     return `Note #${this.note.id}`;
+  }
+
+  get dragPos() {
+    return this.__dragPos;
+  }
+
+  set dragPos(pos: { x: number; y: number }) {
+    this.__dragPos = pos;
+  }
+
+  onHeaderMousedown(e: MouseEvent) {
+    console.log('band');
+    this.startDrag(e.clientX, e.clientY);
   }
 
   //
