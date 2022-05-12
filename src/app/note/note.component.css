@@ -164,6 +164,12 @@ header {
   color: rgba(0, 0, 0, 0.6);
 }
 
+.delete-btn {
+  position: absolute;
+  align-self: flex-start;
+  top: calc(100% + 4px);
+}
+
 /* SCROLLBAR */
 .custom-scrollbar::-webkit-scrollbar {
   width: 8px;
@@ -177,3 +183,4 @@ header {
   background-color: #dfdfdf;
   border-radius: 10px;
 }
+

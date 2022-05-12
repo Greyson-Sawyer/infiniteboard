@@ -46,3 +46,13 @@
     >
   </div>
 </div>
+
+<button
+  *ngIf="isSettingsOpen"
+  mat-raised-button
+  color="warn"
+  class="delete-btn"
+  (click)="deleteNote()"
+>
+  Delete Note
+</button>

@@ -86,6 +86,12 @@ export class FakeDataService {
     this.saveNotesToLocalStorage();
   }
 
+  deleteNote(note: Note) {
+    const i = this.__notes.indexOf(note);
+    this.__notes.splice(i,1)
+    this.saveNotesToLocalStorage()
+  }
+
   getNotesFromLocalStorage() {
     const notes = JSON.parse(localStorage.getItem('notes'));
     if (notes) {

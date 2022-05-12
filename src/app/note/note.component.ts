@@ -224,6 +224,10 @@ export class NoteComponent implements OnInit {
     );
   }
 
+  deleteNote() {
+    this.data.deleteNote(this.note);
+  }
+
   focusHeader() {
     // Has to have a slight delay to avoid focusing a disabled input
     // which is not allowed
