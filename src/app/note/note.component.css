@@ -71,6 +71,10 @@ header {
   transition: 200ms cubic-bezier(0.34, 1.23, 0.86, 1.06);
 }
 
+.input-header:disabled {
+  color: black;
+}
+
 :host:hover .input-header::placeholder,
 :host.active .input-header::placeholder {
   color: rgba(0, 0, 0, 0.6);

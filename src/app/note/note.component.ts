@@ -91,7 +91,7 @@ export class NoteComponent implements OnInit {
   }
 
   get headerText() {
-    return `Note #${this.note.id}`;
+    return `Note ${this.note.id+1}`;
   }
 
   get dragPos() {
