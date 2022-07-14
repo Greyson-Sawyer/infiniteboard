@@ -112,6 +112,10 @@ header {
   cursor: default;
 }
 
+.note-body:disabled {
+  color: black;
+}
+
 :host:active .note-body {
   cursor: grabbing;
 }
