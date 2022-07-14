@@ -72,7 +72,7 @@ header {
 }
 
 .input-header:disabled {
-  color: black;
+  color: rgba(0,0,0,0.87);
 }
 
 :host:hover .input-header::placeholder,
@@ -117,7 +117,7 @@ header {
 }
 
 .note-body:disabled {
-  color: black;
+  color: rgba(0,0,0,0.87);
 }
 
 :host:active .note-body {
