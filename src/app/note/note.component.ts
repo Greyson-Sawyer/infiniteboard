@@ -203,7 +203,6 @@ export class NoteComponent implements OnInit {
 
   saveNote() {
     this.data.saveNotesToLocalStorage();
-    this.renderer.
   }
 
   activateNote(clickedElement: string) {
