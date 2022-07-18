@@ -99,6 +99,12 @@ header {
 
 /* BODY */
 
+[contenteditable=true]:empty:not(:focus)::before {
+  content: attr(placeholder);
+  color: #555; 
+}
+
+
 .note-body {
   border: none;
   resize: none;

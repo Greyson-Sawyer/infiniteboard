@@ -203,6 +203,7 @@ export class NoteComponent implements OnInit {
 
   saveNote() {
     this.data.saveNotesToLocalStorage();
+    this.renderer.
   }
 
   activateNote(clickedElement: string) {
@@ -236,5 +237,9 @@ export class NoteComponent implements OnInit {
 
   focusBody() {
     setTimeout(() => this.noteBodyInput.nativeElement.focus(), 0);
+  }
+
+  blurEvent(e){
+    console.log(e)
   }
 }

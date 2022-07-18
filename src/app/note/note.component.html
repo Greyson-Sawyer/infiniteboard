@@ -18,14 +18,25 @@
   >
 </header>
 
-<textarea
+<!-- <textarea
   class="note-body custom-scrollbar"
   [placeholder]="note.sentiment"
   [(ngModel)]="note.body"
   (change)="saveNote()"
   [disabled]="!isActive"
   #notebody
-></textarea>
+></textarea> -->
+
+<div
+  [attr.contenteditable]="isActive"
+  class="note-body custom-scrollbar"
+  [attr.placeholder]="note.sentiment"
+  (change)="saveNote()"
+  (blur)="blurEvent($event)"
+  #notebody
+>
+  {{ note.body }}
+</div>
 
 <div
   class="resize-icon"
