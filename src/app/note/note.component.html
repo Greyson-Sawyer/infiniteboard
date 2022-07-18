@@ -28,11 +28,12 @@
 ></textarea> -->
 
 <div
-  [attr.contenteditable]="isActive"
   class="note-body custom-scrollbar"
   [attr.placeholder]="note.sentiment"
   (change)="saveNote()"
   (blur)="blurEvent($event)"
+  [attr.contenteditable]="isActive"
+  [(RichText)]="note.body"
   #notebody
 >
   {{ note.body }}
