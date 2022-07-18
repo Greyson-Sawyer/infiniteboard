@@ -6,6 +6,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 
+// DIRECTIVES
+import { RichTextDirective } from './directives/rich-text.directive';
+
 // USER
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -62,6 +65,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     SidebarComponent,
     ZoomControlsComponent,
     NoteComponent,
+    RichTextDirective,
   ],
   bootstrap: [AppComponent],
   providers: [
