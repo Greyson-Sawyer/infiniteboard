@@ -33,7 +33,7 @@
   (change)="saveNote()"
   (blur)="blurEvent($event)"
   [attr.contenteditable]="isActive"
-  [RichText]="note.body"
+  richText="note.body"
   #notebody
 >
   {{ note.body }}
